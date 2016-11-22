@@ -7,10 +7,17 @@ package main
 import "fmt"
 
 var count int = 0
-
+var n int
 
 func main(){
-	collatz(6)
+
+	fmt.Println("Input a positive number: ")
+	
+	_, err := fmt.Scanf("%d", &n)
+	if err != nil {
+		panic(err)
+	}
+	collatz(n)
 }
 
 func collatz(n int){
