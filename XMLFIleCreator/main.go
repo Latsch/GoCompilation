@@ -8,17 +8,22 @@ import (
 )
 
 
-
-
-
-func main(){
-
-	var n string
-
+func openXML(){
+	
 	xmlFile, err := os.Open("data.xml")
 	if err != nil {
 		fmt.Printf("Error opening file:", err )
-		fmt.Printf("\nDo you wish to create it? y/n : ")
+		createXML()
+		
+	}
+	defer xmlFile.Close()
+
+}
+
+func createXML(){
+	var n string
+	
+	fmt.Printf("\nDo you wish to create it? y/n : ")
 		
 		_, err := fmt.Scanf("%s", &n)
 		if err != nil {
@@ -32,8 +37,10 @@ func main(){
 		} else {
 			return
 		}
-		
-	}
-	defer xmlFile.Close()
 
+}
+
+
+func main(){
+	openXML()
 }
